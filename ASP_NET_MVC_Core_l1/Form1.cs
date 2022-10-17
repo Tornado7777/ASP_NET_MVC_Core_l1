@@ -44,8 +44,7 @@ namespace ASP_NET_MVC_Core_l1
                     var jObj = new int[] { j };
                     res = textBox2.BeginInvoke(new MyDelegate2(textBox2Change), jObj);
                     textBox2.EndInvoke(res);
-                    //textBox2.Text = j.ToString();
-                    //Thread.Sleep(200);
+                    Thread.Sleep(200);
                 }
             }
         }
@@ -64,9 +63,7 @@ namespace ASP_NET_MVC_Core_l1
             if (o != null && o is int[] && ((int[])o).Length > 0)
             {
                 var j = ((int[])o);
-
                 textBox2.Text = j[0].ToString();
-                Thread.Sleep(200);
             }
         }
     }
