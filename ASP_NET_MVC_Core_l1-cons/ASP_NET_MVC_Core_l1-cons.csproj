@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>ASP_NET_MVC_Core_l1_cons</RootNamespace>
-    <StartupObject>ASP_NET_MVC_Core_l1_cons.Sample03lesson2AsyncAwait</StartupObject>
+    <StartupObject>ASP_NET_MVC_Core_l1_cons.hw2</StartupObject>
   </PropertyGroup>
 
 </Project>
