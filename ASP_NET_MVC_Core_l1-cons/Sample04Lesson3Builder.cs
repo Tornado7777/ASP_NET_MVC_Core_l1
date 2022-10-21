@@ -44,10 +44,10 @@ namespace ASP_NET_MVC_Core_l1_cons
         }
 
         public MailMessage Build() 
-        { 
+        {
             //доп.логика. Проверяем на наличие получателя почты
             if (string.IsNullOrEmpty(_mailMessage.To))
-                throw new Exception("MailTo is empty.")
+                throw new Exception("MailTo is empty.");
             //
             return _mailMessage; 
         }

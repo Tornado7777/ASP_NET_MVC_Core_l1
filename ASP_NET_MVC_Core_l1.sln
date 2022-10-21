@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP_NET_MVC_Core_l1", "ASP_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP_NET_MVC_Core_l1-cons", "ASP_NET_MVC_Core_l1-cons\ASP_NET_MVC_Core_l1-cons.csproj", "{FFD4BAAE-633E-446C-99F5-645A9FD96107}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP_NET_MVC_Core_l3_WPF", "ASP_NET_MVC_Core_l3_WPF\ASP_NET_MVC_Core_l3_WPF.csproj", "{BAA8121B-A703-45F5-8D9B-9483C84DBF72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FFD4BAAE-633E-446C-99F5-645A9FD96107}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFD4BAAE-633E-446C-99F5-645A9FD96107}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFD4BAAE-633E-446C-99F5-645A9FD96107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA8121B-A703-45F5-8D9B-9483C84DBF72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA8121B-A703-45F5-8D9B-9483C84DBF72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA8121B-A703-45F5-8D9B-9483C84DBF72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA8121B-A703-45F5-8D9B-9483C84DBF72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
