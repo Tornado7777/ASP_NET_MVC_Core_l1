@@ -13,7 +13,7 @@ namespace ASP_NET_MVC_Core_l1
 {
     public partial class Form1 : Form
     {
-        private delegate void MyDelegate(object iObj);
+        //private delegate void MyDelegate(object iObj);
         private delegate void MyDelegate2(object iObj);
         public Form1()
         {
@@ -34,37 +34,57 @@ namespace ASP_NET_MVC_Core_l1
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            buttonStart.Enabled = false;
+            trackBar1.Enabled = false;
+            trackBar1.Refresh();
+            textBox1.Text = "";
+            textBox1.Refresh();
             for (int i = 0; i < 10; i++)
             {
-                var iObj = new int[] { i };
-                IAsyncResult res = textBox1.BeginInvoke(new MyDelegate(textBox1Change), iObj );
-                textBox1.EndInvoke(res);
+                object iObj = i;
+                int ii = ((int)iObj);
+                Invoke((MethodInvoker) delegate
+                {
+                    textBox1.Text += Fibonachi(ii).ToString() + "; ";
+                    textBox1.Refresh();
+                });
+                //Thread.Sleep(200);
+                //textBox1.EndInvoke(res);
                 for (int j = trackBar1.Value; j > 0; j--)
                 {
-                    var jObj = new int[] { j };
-                    res = textBox2.BeginInvoke(new MyDelegate2(textBox2Change), jObj);
+                    object jObj = j;
+                    IAsyncResult res = textBox2.BeginInvoke(new MyDelegate2(textBox2Change), jObj);
                     textBox2.EndInvoke(res);
                     Thread.Sleep(200);
                 }
             }
+            buttonStart.Enabled = true;
+            trackBar1.Enabled = true;
         }
 
-        private void textBox1Change(object o)
-        {
-            if (o != null && o is int[] && ((int[])o).Length > 0)
-            {
-                var i = ((int[])o);
-                textBox1.Text += Fibonachi(i[0]).ToString() + "; ";
-            }
-        }
+        //private void textBox1Change(object o)
+        //{
+        //    if (o != null && o is int)
+        //    {
+        //        int i = ((int)o);
+        //        textBox1.Text += Fibonachi(i).ToString() + "; ";
+        //        textBox1.Refresh();
+        //    }
+        //}
 
         private void textBox2Change(object o)
         {
-            if (o != null && o is int[] && ((int[])o).Length > 0)
+            if (o != null && o is int)
             {
-                var j = ((int[])o);
-                textBox2.Text = j[0].ToString();
+                int j = ((int)o);
+                textBox2.Text = j.ToString();
+                textBox2.Refresh();
             }
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            textBox2.Text = trackBar1.Value.ToString();
         }
     }
 }
