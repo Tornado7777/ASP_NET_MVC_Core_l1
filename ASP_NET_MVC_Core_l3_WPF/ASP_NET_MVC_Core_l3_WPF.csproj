@@ -63,7 +63,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Command\ButtonFabric.cs" />
     <Compile Include="Command\FirstButtonCommand.cs" />
+    <Compile Include="Command\TwoButtonCommand.cs" />
     <Compile Include="Command\ViewModel\ButtonViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
