@@ -108,10 +108,6 @@ namespace ASP_NET_MVC_Core_l4hw
             }
             Console.ReadKey(true);
         }
-
-        
     }
-
-
     #endregion
 }
