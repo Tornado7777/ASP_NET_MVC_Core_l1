@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP_NET_MVC_Core_l1-cons", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP_NET_MVC_Core_l3_WPF", "ASP_NET_MVC_Core_l3_WPF\ASP_NET_MVC_Core_l3_WPF.csproj", "{BAA8121B-A703-45F5-8D9B-9483C84DBF72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP_NET_MVC_Core_l4hw", "ASP_NET_MVC_Core_l4hw\ASP_NET_MVC_Core_l4hw.csproj", "{9EAE6EC2-1EC0-49A2-9214-2516DF2F6EEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP_NET_MVC_Core_l4hw", "ASP_NET_MVC_Core_l4hw\ASP_NET_MVC_Core_l4hw.csproj", "{9EAE6EC2-1EC0-49A2-9214-2516DF2F6EEE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP_NET_MVC_Core_les5", "ASP_NET_MVC_Core_les5\ASP_NET_MVC_Core_les5.csproj", "{D2266123-9B1F-43F7-872D-AF5F333EBA91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{9EAE6EC2-1EC0-49A2-9214-2516DF2F6EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EAE6EC2-1EC0-49A2-9214-2516DF2F6EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EAE6EC2-1EC0-49A2-9214-2516DF2F6EEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2266123-9B1F-43F7-872D-AF5F333EBA91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2266123-9B1F-43F7-872D-AF5F333EBA91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2266123-9B1F-43F7-872D-AF5F333EBA91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2266123-9B1F-43F7-872D-AF5F333EBA91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
