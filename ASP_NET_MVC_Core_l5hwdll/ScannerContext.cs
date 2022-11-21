@@ -5,21 +5,23 @@ using System.Text;
 
 namespace ASP_NET_MVC_Core_l5hwdll
 {
-    public interface IScannerDevice
-    {
-        Stream Scan();
-    }
+ 
     public sealed class ScannerContext
     {
-        private readonly IScannerDevice _device;
+        private readonly IMonitorData _device;
         private IScanOutputStrategy _currentStrategy;
-        public ScannerContext(IScannerDevice device)
+        public ScannerContext(IMonitorData device)
         {
             _device = device;
         }
         public void SetupOutputScanStrategy(IScanOutputStrategy strategy)
         {
             _currentStrategy = strategy;
+        }
+
+        public IMonitorData Get()
+        {
+            return _device;
         }
         public void Execute(string outputFileName = "")
 
@@ -41,21 +43,21 @@ namespace ASP_NET_MVC_Core_l5hwdll
     }
     public interface IScanOutputStrategy
     {
-        void ScanAndSave(IScannerDevice scannerDevice, string
+        void ScanAndSave(IMonitorData scannerDevice, string
         outputFileName);
     }
-    public sealed class PdfScanOutputStrategy : IScanOutputStrategy
+    public sealed class txtScanOutputStrategy : IScanOutputStrategy
     {
-        public void ScanAndSave(IScannerDevice scannerDevice, string
+        public void ScanAndSave(IMonitorData scannerDevice, string
         outputFileName)
         {
-
-            //do pdf output
+            //do txt output
+           File.AppendAllText(outputFileName, scannerDevice.ToString());
         }
     }
     public sealed class ImageScanOutputStrategy : IScanOutputStrategy
     {
-        public void ScanAndSave(IScannerDevice scannerDevice, string
+        public void ScanAndSave(IMonitorData scannerDevice, string
         outputFileName)
         {
             //do image outptut

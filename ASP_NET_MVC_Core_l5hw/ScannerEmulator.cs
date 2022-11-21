@@ -12,9 +12,17 @@ namespace ASP_NET_MVC_Core_l5hw
         public static void ScannerSubscriber(string text)
         {
             Random rnd = new Random();
-            IMonitorData monitorData = new ScannerMonitorData (rnd.Next(1, 99), rnd.Next(1, 99));
-            monitorDeviceContext._monitoringSystemDevice.Add(monitorData);
+            ScannerContext scannerContext = new ScannerContext(
+                new ScannerMonitorData(rnd.Next(1, 99), rnd.Next(1, 99))
+                );
+            scannerContext.SetupOutputScanStrategy(new txtScanOutputStrategy());
+
+            monitorDeviceContext._monitoringSystemDevice.Add(scannerContext.Get());
             monitorDeviceContext.RunMonitorProcessLastItem();
+
+            scannerContext.Execute("D:/logs/sample2.txt");
+
+
             Console.WriteLine(text);            
         }
     }

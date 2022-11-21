@@ -7,6 +7,8 @@ namespace ASP_NET_MVC_Core_l5hwdll
     {
         int Cpu { get;  }
         int Memory { get; }
+
+        string ToString();
     }
     public interface IMonitoringSystemDevice
     {
@@ -29,6 +31,11 @@ namespace ASP_NET_MVC_Core_l5hwdll
         {
             Cpu = cpu;
             Memory = memory;
+        }
+
+        public override string ToString()
+        {
+            return $"Cpu: {Cpu}; Memoty: {Memory} \n";
         }
     }
     public class ScannerMonitorDataList : IMonitoringSystemDevice 
