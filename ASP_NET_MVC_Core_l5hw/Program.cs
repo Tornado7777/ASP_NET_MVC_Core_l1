@@ -24,7 +24,7 @@ namespace ASP_NET_MVC_Core_l5hw
             ScannerEmulator scannerEmulator = new ScannerEmulator();
 
             using MyLogFileReader myLogFileReader = new MyLogFileReader(
-                "D:/logs/sample.log",ScannerEmulator.ScannerSubscriber);
+                "D:/logs/sample2.log",ScannerEmulator.ScannerSubscriber);
 
             Console.ReadKey();
         }

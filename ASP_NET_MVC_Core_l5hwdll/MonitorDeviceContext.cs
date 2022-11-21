@@ -8,8 +8,10 @@ namespace ASP_NET_MVC_Core_l5hwdll
         int Cpu { get;  }
         int Memory { get; }
     }
-    public interface IMonitoringSystemDevice : IEnumerable<IMonitorData>
+    public interface IMonitoringSystemDevice
     {
+        void Add(IMonitorData monitorData);
+        IMonitorData ById(int id);
         IEnumerator<IMonitorData> GetEnumerator();
     }
     public interface IMonitorPipelineItem
@@ -29,7 +31,37 @@ namespace ASP_NET_MVC_Core_l5hwdll
             Memory = memory;
         }
     }
+    public class ScannerMonitorDataList : IMonitoringSystemDevice 
+    {
+        private List<IMonitorData> _scannerMonitorDataList;
 
+        public ScannerMonitorDataList ()
+        {
+            _scannerMonitorDataList = new List<IMonitorData> ();
+        }
+        public IEnumerator<IMonitorData> GetEnumerator()
+        {
+            foreach (var line in _scannerMonitorDataList)
+            {
+                yield return line;
+            }
+
+        }
+
+        public void Add(IMonitorData monitorData)
+        {
+            _scannerMonitorDataList.Add(monitorData);
+        }
+        IEnumerator<IMonitorData> IMonitoringSystemDevice.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public IMonitorData ById(int id)
+        {
+            return _scannerMonitorDataList[id];
+        }
+    }
 
 
     public abstract class MonitorPipelineItem : IMonitorPipelineItem
@@ -62,10 +94,11 @@ namespace ASP_NET_MVC_Core_l5hwdll
                 return false;
             }
             //do some work
+            Console.WriteLine($"CpuMonitorPipelineItem {data.Cpu} succes");
             return true;
         }
     }
-    public sealed class VoltageMonitorPipeline : MonitorPipelineItem
+    public sealed class MemoryMonitorPipelineItem : MonitorPipelineItem
     {
         protected override bool ReviewData(IMonitorData data)
         {
@@ -78,17 +111,19 @@ namespace ASP_NET_MVC_Core_l5hwdll
                 return false;
             }
             //do some work
-
+            Console.WriteLine($"MemoryMonitorPipelineItem {data.Memory} succes");
             return true;
         }
     }
     public sealed class MonitorDeviceContext
     {
-        private readonly IMonitoringSystemDevice _monitoringSystemDevice;
+        public readonly IMonitoringSystemDevice _monitoringSystemDevice;
+        private int _currentItem;
         public MonitorDeviceContext(IMonitoringSystemDevice
         monitoringSystemDevice)
         {
             _monitoringSystemDevice = monitoringSystemDevice;
+            _currentItem = 0;
         }
         public void RunMonitorProcess()
         {
@@ -98,14 +133,21 @@ namespace ASP_NET_MVC_Core_l5hwdll
                 pipelineItem.ProcessData(data);
             }
         }
+
+        public void RunMonitorProcessLastItem()
+        {
+            IMonitorPipelineItem pipelineItem = CreatePipeline();
+
+            pipelineItem.ProcessData(_monitoringSystemDevice.ById(_currentItem));
+        }
         private IMonitorPipelineItem CreatePipeline()
         {
             IMonitorPipelineItem cpuMonitorPipelineItem = new
             CpuMonitorPipelineItem();
-            IMonitorPipelineItem voltageMonitorPipelineItem = new
-            VoltageMonitorPipeline();
+            IMonitorPipelineItem memoryMonitorPipelineItem = new
+            MemoryMonitorPipelineItem();
 
-            cpuMonitorPipelineItem.SetNextItem(voltageMonitorPipelineItem);
+            cpuMonitorPipelineItem.SetNextItem(memoryMonitorPipelineItem);
             return cpuMonitorPipelineItem;
         }
     }
